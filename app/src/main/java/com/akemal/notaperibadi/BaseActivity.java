@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         makeNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BaseActivity.this, NoteDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NoteDetailActivity.class);
                 intent.putExtra(AppConstant.NOTE_OR_REMINDER, mTitle);
                 startActivity(intent);
             }
@@ -196,6 +197,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
     }
 
+
+    protected void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 
 
 
